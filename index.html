@@ -101,9 +101,9 @@
             <div class="category-item">
                 <button class="category-btn" onclick="toggleMenu('ti-menu')">TI & DESENVOLVIMENTO <span>▼</span></button>
 <div id="ti-menu" class="subcategory-list">
-    <a href="#" class="simulado-link" onclick="setupSimulado('https://docs.google.com/spreadsheets/d/e/2PACX-1vT9XNps8c6jUHWhOzqpRnTD-rkdMI9Y-ZE11sk-OQrGmUtOOhjBFxuAT-z2zduB47CXd7tvn3DcmJyJ/pub?output=csv', 'Banco de Dados')">Banco de Dados</a>
+    <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('https://docs.google.com/spreadsheets/d/e/2PACX-1vT9XNps8c6jUHWhOzqpRnTD-rkdMI9Y-ZE11sk-OQrGmUtOOhjBFxuAT-z2zduB47CXd7tvn3DcmJyJ/pub?output=csv', 'Banco de Dados'); return false;">Banco de Dados</a>
     
-    <a href="#" class="simulado-link" onclick="setupSimulado('LINK_DE_OUTRA_PLANILHA_AQUI', 'Programação Web')">Programação Web</a>
+    <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_DE_OUTRA_PLANILHA_AQUI', 'Programação Web'); return false;">Programação Web</a>
 </div>
             </div>
 
@@ -185,11 +185,14 @@
         let timeLeft = 7200;
         let timerInt;
 
-        async function setupSimulado(url, titulo) {
-            // Se o link for um dos marcadores de posição, avisa o usuário
-            if(!url || url.includes('SEU_LINK') || url.includes('OUTRO_LINK') || url.includes('LINK_GESTAO')) {
-                return alert("Link da planilha não configurado para este simulado.");
-            }
+async function setupSimulado(url, titulo) {
+    // Evita comportamentos inesperados do navegador
+    if (event) event.preventDefault(); 
+
+    // Se o link for um dos marcadores de posição, avisa o usuário
+    if(!url || url.includes('SEU_LINK') || url.includes('OUTRO_LINK') || url.includes('LINK_GESTAO')) {
+        return alert("Link da planilha não configurado para este simulado.");
+    }
             
             clearInterval(timerInt);
             document.getElementById('welcome-msg').style.display = 'none';
@@ -317,6 +320,7 @@
 </body>
 
 </html>
+
 
 
 
