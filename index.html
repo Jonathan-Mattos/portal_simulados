@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Simulados - Firjan Senai</title>
+    <title>Portal de Simulados - Firjan Senai Caxias</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
@@ -97,29 +97,87 @@
             <p style="font-size: 0.8rem; opacity: 0.7;">Simulados de Avaliação</p>
         </div>
         
-        <div class="menu-container">
-            <div class="category-item">
-                <button class="category-btn" onclick="toggleMenu('ti-menu')">TI & DESENVOLVIMENTO <span>▼</span></button>
-<div id="ti-menu" class="subcategory-list">
-    <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('https://docs.google.com/spreadsheets/d/e/2PACX-1vT9XNps8c6jUHWhOzqpRnTD-rkdMI9Y-ZE11sk-OQrGmUtOOhjBFxuAT-z2zduB47CXd7tvn3DcmJyJ/pub?output=csv', 'Banco de Dados'); return false;">Banco de Dados</a>
-    
-    <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_DE_OUTRA_PLANILHA_AQUI', 'Programação Web'); return false;">Programação Web</a>
-</div>
-            </div>
+ <div class="menu-container">
 
-            <div class="category-item">
-                <button class="category-btn" onclick="toggleMenu('gestao-menu')">GESTÃO E LOGÍSTICA <span>▼</span></button>
-                <div id="gestao-menu" class="subcategory-list">
-                    <a href="#" class="simulado-link" onclick="setupSimulado('LINK_GESTAO', 'Gestão Industrial')">Gestão Industrial</a>
-                </div>
-            </div>
+    <div class="category-item">
+        <button class="category-btn" onclick="toggleMenu('eletro-menu')">ELETROELETRÔNICA APLICADA <span>▼</span></button>
+        <div id="eletro-menu" class="subcategory-list">
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_1', 'Eletroeletrônica - Simulado 1'); return false;">Simulado 1</a>
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_2', 'Eletroeletrônica - Simulado 2'); return false;">Simulado 2</a>
         </div>
+    </div>
+
+    <div class="category-item">
+        <button class="category-btn" onclick="toggleMenu('logica-menu')">LÓGICA DE PROGRAMAÇÃO <span>▼</span></button>
+        <div id="logica-menu" class="subcategory-list">
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_1', 'Lógica - Simulado 1'); return false;">Simulado 1</a>
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_2', 'Lógica - Simulado 2'); return false;">Simulado 2</a>
+        </div>
+    </div>
+
+    <div class="category-item">
+        <button class="category-btn" onclick="toggleMenu('modelagem-menu')">MODELAGEM DE SISTEMAS <span>▼</span></button>
+        <div id="modelagem-menu" class="subcategory-list">
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_1', 'Modelagem - Simulado 1'); return false;">Simulado 1</a>
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_2', 'Modelagem - Simulado 2'); return false;">Simulado 2</a>
+        </div>
+    </div>
+
+    <div class="category-item">
+        <button class="category-btn" onclick="toggleMenu('bd-menu')">BANCO DE DADOS <span>▼</span></button>
+        <div id="bd-menu" class="subcategory-list">
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('https://docs.google.com/spreadsheets/d/e/2PACX-1vT9XNps8c6jUHWhOzqpRnTD-rkdMI9Y-ZE11sk-OQrGmUtOOhjBFxuAT-z2zduB47CXd7tvn3DcmJyJ/pub?output=csv', 'Banco de Dados - Simulado 1'); return false;">Simulado 1</a>
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_2', 'Banco de Dados - Simulado 2'); return false;">Simulado 2</a>
+        </div>
+    </div>
+
+    <div class="category-item">
+        <button class="category-btn" onclick="toggleMenu('dev-sist-menu')">DESENVOLVIMENTO DE SISTEMAS <span>▼</span></button>
+        <div id="dev-sist-menu" class="subcategory-list">
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_1', 'Dev. Sistemas - Simulado 1'); return false;">Simulado 1</a>
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_2', 'Dev. Sistemas - Simulado 2'); return false;">Simulado 2</a>
+        </div>
+    </div>
+
+    <div class="category-item">
+        <button class="category-btn" onclick="toggleMenu('teste-menu')">TESTE DE SISTEMAS <span>▼</span></button>
+        <div id="teste-menu" class="subcategory-list">
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_1', 'Teste de Sistemas - Simulado 1'); return false;">Simulado 1</a>
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_2', 'Teste de Sistemas - Simulado 2'); return false;">Simulado 2</a>
+        </div>
+    </div>
+
+    <div class="category-item">
+        <button class="category-btn" onclick="toggleMenu('mobile-menu')">DEV. DE APLICATIVO MOBILE <span>▼</span></button>
+        <div id="mobile-menu" class="subcategory-list">
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_1', 'Mobile - Simulado 1'); return false;">Simulado 1</a>
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_2', 'Mobile - Simulado 2'); return false;">Simulado 2</a>
+        </div>
+    </div>
+
+    <div class="category-item">
+        <button class="category-btn" onclick="toggleMenu('iot-menu')">INTERNET DAS COISAS <span>▼</span></button>
+        <div id="iot-menu" class="subcategory-list">
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_1', 'IoT - Simulado 1'); return false;">Simulado 1</a>
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_2', 'IoT - Simulado 2'); return false;">Simulado 2</a>
+        </div>
+    </div>
+
+    <div class="category-item">
+        <button class="category-btn" onclick="toggleMenu('manutencao-menu')">IMPLANTAÇÃO E MANUTENÇÃO <span>▼</span></button>
+        <div id="manutencao-menu" class="subcategory-list">
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_1', 'Manutenção - Simulado 1'); return false;">Simulado 1</a>
+            <a href="javascript:void(0);" class="simulado-link" onclick="setupSimulado('LINK_SIMULADO_2', 'Manutenção - Simulado 2'); return false;">Simulado 2</a>
+        </div>
+    </div>
+
+</div>
     </div>
 
     <div class="main-content">
         <div id="welcome-msg">
-            <h1>Bem-vindo ao Portal de Simulados</h1>
-            <p>Selecione uma disciplina no menu lateral para começar.</p>
+            <h1>Bem-vindo ao Portal de Simulados SAEP do SENAI Caxias</h1><h1>Desenvolvimento de Sistemas </h1>
+            <h2>Selecione uma disciplina no menu lateral para começar.</h2>
         </div>
 
         <div class="quiz-container" id="quiz-ui" style="display: none;">
@@ -320,6 +378,7 @@ async function setupSimulado(url, titulo) {
 </body>
 
 </html>
+
 
 
 
