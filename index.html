@@ -185,7 +185,10 @@
         let timerInt;
 
         async function setupSimulado(url, titulo) {
-            if(!url || url.includes('https://docs.google.com/spreadsheets/d/e/2PACX-1vT9XNps8c6jUHWhOzqpRnTD-rkdMI9Y-ZE11sk-OQrGmUtOOhjBFxuAT-z2zduB47CXd7tvn3DcmJyJ/pub?output=csv')) return alert("Link da planilha não configurado para este simulado.");
+            // Se o link for um dos marcadores de posição, avisa o usuário
+            if(!url || url.includes('SEU_LINK') || url.includes('OUTRO_LINK') || url.includes('LINK_GESTAO')) {
+                return alert("Link da planilha não configurado para este simulado.");
+            }
             
             clearInterval(timerInt);
             document.getElementById('welcome-msg').style.display = 'none';
@@ -193,23 +196,40 @@
             document.getElementById('quiz-core').style.display = 'none';
             document.getElementById('result-screen').style.display = 'none';
             document.getElementById('loading-status').style.display = 'block';
+            document.getElementById('loading-status').innerHTML = "Carregando questões...";
             document.getElementById('current-title').innerText = titulo;
 
             try {
-                const res = await fetch(url);
-                const csv = await res.text();
-                const rows = csv.split(/\r?\n/).filter(r => r.trim() !== "");
+                // Adicionamos um timestamp para evitar cache do navegador
+                const response = await fetch(url + "&t=" + new Date().getTime());
+                if (!response.ok) throw new Error('Erro na requisição');
+                
+                const csvData = await response.text();
+                
+                // Divide por linhas e remove linhas vazias
+                const rows = csvData.split(/\r?\n/).filter(r => r.trim() !== "");
                 
                 questions = rows.slice(1).map(row => {
+                    // Separa por vírgula respeitando aspas (essencial para o Google Sheets)
                     const cols = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-                    return {
-                        q: cols[0].replace(/"/g, ""),
-                        options: [cols[1], cols[2], cols[3], cols[4]].map(o => o.replace(/"/g, "")),
-                        correct: parseInt(cols[5].replace(/"/g, "")),
-                        exp: cols[6] ? cols[6].replace(/"/g, "") : ""
-                    };
-                });
+                    
+                    if (cols && cols.length >= 6) {
+                        // Função interna para limpar aspas e espaços extras
+                        const clean = (t) => t ? t.replace(/^"|"$/g, "").trim() : "";
+                        
+                        return {
+                            q: clean(cols[0]),
+                            options: [clean(cols[1]), clean(cols[2]), clean(cols[3]), clean(cols[4])],
+                            correct: parseInt(clean(cols[5])),
+                            exp: cols[6] ? clean(cols[6]) : "Sem comentário técnico."
+                        };
+                    }
+                    return null;
+                }).filter(q => q !== null);
 
+                if (questions.length === 0) throw new Error('Planilha vazia');
+
+                // Inicializa variáveis do Simulado
                 answers = new Array(questions.length).fill(null);
                 currentIdx = 0;
                 timeLeft = 7200;
@@ -220,10 +240,11 @@
                 renderQ();
 
             } catch (e) {
-                alert("Erro ao carregar os dados da disciplina.");
+                console.error(e);
+                document.getElementById('loading-status').innerHTML = 
+                    `<b style="color:red">Erro ao conectar!</b><br>Verifique se a planilha está 'Publicada na Web' como CSV.`;
             }
         }
-
         function startTimer() {
             timerInt = setInterval(() => {
                 const h = Math.floor(timeLeft / 3600);
@@ -295,5 +316,6 @@
 </body>
 
 </html>
+
 
 
